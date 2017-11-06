@@ -1,0 +1,387 @@
+= Model-Driven Design
+
+% : subtitle
+%   in Ruby
+: author
+   Giovanni Sakti
+: institution
+   Starqle
+% : content-source
+%    id_ruby
+% : date
+%    2017-11-01
+: theme
+   starqle
+
+= Model-Driven Design
+
+(('tag:center'))We already know that in DDD, everyone should participate in the design process..
+
+== properties
+  : hide-title
+    true
+
+= Model-Driven Design
+
+(('tag:center'))..and we know that we must produce domain models and ubiquitous language.
+
+== properties
+  : hide-title
+    true
+
+= Model-Driven Design
+
+(('tag:center'))To help us structure our way of thinking, now we will discuss about the ((*building blocks*)) of a domain model.
+
+
+= Building Blocks
+
+(('tag:center'))The Building Blocks
+
+== properties
+  : hide-title
+    true
+
+= Layered Architecture
+
+(('tag:center'))To build a great model, we also have to think about the implementation from the beginning.
+
+= Layered Architecture
+
+(('tag:center'))When we create an application, a large part of it may not directly related to the domain.
+
+= Layered Architecture
+
+(('tag:center'))Major portion of our codes will be about the database access, file or network access, user interfaces, etc.
+
+= Layered Architecture
+
+(('tag:center'))It is important here to think about ((*layers*)).
+
+= Layered Architecture
+
+(('tag:center'))We must make sure that, all the code related to the domain model is concentrated in one layer.
+
+= Layered Architecture
+
+(('tag:center'))It must be ((*isolated*)) from the user interface, application and infrastructure code.
+
+= Layered Architecture
+
+(('tag:center'))The huge benefits: our codes will be more adaptive to change..
+
+= Layered Architecture
+
+(('tag:center'))..plus easier to tests and shown to less-technical people in our team.
+
+= Entities
+
+(('tag:center'))The next building block is called ((*Entities*)).
+
+= Entities
+
+(('tag:center'))There are objects in domain models that spans the life of a system and can extend beyond it.
+
+= Entities
+
+(('tag:center'))Each objects of those kind also can be uniquely identified.
+
+= Entities
+
+(('tag:center'))Such objects are called ((*Entities*))
+
+= Entities
+
+(('tag:center'))The most important thing when creating entities, you have to define a means for distinguishing each object regardless of its form or history.
+
+= Entities
+
+(('tag:center'))You can use an attribute of it, or combination of attributes.
+
+= Entities
+
+(('tag:center'))System must be able to distinguish any 1 object (important).
+
+= Value Objects
+
+(('tag:center'))But not everything can become entities.
+
+== properties
+  : hide-title
+    true
+
+= Value Objects
+
+(('tag:center'))Tracking identity is hard, lots of consideration involved.
+
+== properties
+  : hide-title
+    true
+
+= Value Objects
+
+(('tag:center'))An object that is used to describe certain aspects of a domain but does not have identity is called The ((*Value Objects*)).
+
+== properties
+  : hide-title
+    true
+
+= Value Objects
+
+(('tag:center'))Consider ((*Point*)), is it necessary to consider each point having identity?
+
+= Value Objects
+
+(('tag:center'))No. a single point is a value object.
+
+= Value Objects
+
+(('tag:center'))We care about its attributes, but we don't care whether it can be uniquely identified or not.
+
+= Value Objects
+
+Other characteristics:
+* Value objects are highly recommended to be immutable
+* Value objects can contain another value objects
+
+= Service
+
+(('tag:center'))We also have objects that ((*do not have internal state*)) but ((*provide functionality*)) for the domain.
+
+= Service
+
+(('tag:center'))It is called Service.
+
+= Service
+
+Characteristics:
+* The operation performed refers to a domain concept that does not belong to entities or value objects.
+* The operation performed refers to other objects in the domain.
+* The operation is stateless.
+
+= Module
+
+(('tag:center'))Module can be used to organize your models.
+
+= Module
+
+(('tag:center'))They can provide maximum cohesion possible.
+
+= Module
+
+  # blockquote
+  High level of cohesion, low level of coupling
+
+= Module
+
+(('tag:center'))There are two kinds of cohesions that can implemented by module.
+
+= Module
+
+(('tag:center'))The first is communicational cohesion. This is where we group together objects that ((*operate on the same data*)).
+
+= Module
+
+(('tag:center'))The second one is functional cohesion. This is where we group together objects that ((*work together*)) on a ((*well defined task*)).\n
+(('sub: This is the preferred way to structure our application'))
+
+= Module
+
+(('tag:center'))Module should have well-defined interfaces to be accessed by other modules.
+
+= Module
+
+(('tag:center'))Instead of calling 3 objects on a module, it is better to access the interface because it ((*reduces coupling*)).
+
+= Module
+
+(('tag:center'))Module should also evolve, don't keep it frozen.
+
+= Aggregate
+
+(('tag:center'))Aggregate is a group of associated objects, which are considered one unit with regard to data changes.
+
+= Aggregate
+
+(('tag:center'))Each aggregate has one root.
+
+= Aggregate
+
+(('tag:center'))The root is an entity, and it is the only object accessible from outside.
+
+= Factory
+
+(('tag:center'))If creating the object is a laborous process..
+
+== properties
+  : hide-title
+    true
+
+= Factory
+
+(('tag:center'))..it involves a lot of knowledge regarding the internal structure of the object..
+
+== properties
+  : hide-title
+    true
+
+= Factory
+
+(('tag:center'))..and relationships between the objects constructed and the rules applied to them.
+
+== properties
+  : hide-title
+    true
+
+= Factory
+
+(('tag:center'))We should consider using a ((*factory*)) object.
+
+== properties
+  : hide-title
+    true
+
+= Factory
+
+Characteristics:
+* Encapsulate knowledge necessary for object creation
+* Especially useful to create aggregates
+* Creation should be atomic
+
+= Factory
+
+(('tag:center'))Factory vs Object Constructor
+
+= Factory
+
+(('tag:center'))We should use object constructor instead when..
+
+= Factory
+
+* The construction is not complicated
+* The creation of the object does not involve the creation of others
+* All necessary attributes are passed via the constructor
+* There is no hierarchy involved
+
+= Repository
+
+(('tag:center'))Repository is the object that encapsulate all the logic needed to obtain object references.
+
+= Repository
+
+* Factory should create new objects
+* Repository should find already created objects
+
+= Repository
+
+(('tag:center'))When a new object is to be added to the repository, it should be created first using the factory.
+
+= Repository
+
+* Factory contains pure domain codes
+* Repository may contains infrastructure codes
+
+= Preserving Model Integrity
+
+(('tag:center'))Preserving Model Integrity
+
+== properties
+  : hide-title
+    true
+
+= Preserving Model Integrity
+
+(('tag:center'))There are challenges involved when working in a large project with multiple teams.
+
+= Preserving Model Integrity
+
+(('tag:center'))When multiple teams work together, code development is done in parallel.
+
+= Preserving Model Integrity
+
+(('tag:center'))They all start with one big model, and each team given a share of it to implement.
+
+= Preserving Model Integrity
+
+(('tag:center'))In that case, each team only know a portion of the whole model.
+
+= Preserving Model Integrity
+
+(('tag:center'))Everybody knows his own backyard, but other areas are not known in enough detail.
+
+= Preserving Model Integrity
+
+(('tag:center'))We need techniques to ensure multiple teams can collaborate to work on the same model.
+
+= Bounded Context
+
+(('tag:center'))Bounded Context
+
+== properties
+  : hide-title
+    true
+
+= Bounded Context
+
+(('tag:center'))A model that ((*small enough*)) to be assigned to one team.
+
+= Bounded Context
+
+* Bounded context is different with module.
+* Bounded context encompasses module.
+
+= Bounded Context
+
+(('tag:center'))We split our large model into several models, everybody can then work freely on their own pace.
+
+= Bounded Context
+
+This gives team members clear & shared understanding on
+* What has to be consistent
+* What has to be developed independently
+
+= Continous Integration
+
+(('tag:center'))To ensure all new elements fit harmoniously into the rest of the models and implemented correctly..
+
+== properties
+  : hide-title
+    true
+
+= Continous Integration
+
+(('tag:center'))..we should use ((*continous integration*)).
+
+== properties
+  : hide-title
+    true
+
+= Continous Integration
+
+Rules:
+* For each bounded context
+* Daily merges are recommended
+* Do automated build
+
+= Context Map
+
+(('tag:center'))Context map is a document that outlines all bounded contexts and the relationship between them.
+
+= Integration Between Different Contexts
+
+(('tag:center'))Integration Between Different Contexts
+# Shared Kernel
+# Customer-Supplier Relationship
+# Conformist
+# Anti Corruption Layer
+# Separate Ways
+# Open Host Service
+# Distillation
+
+= Thanks
+
+(('tag:center'))Thanks!
+
+== properties
+  : hide-title
+    true
