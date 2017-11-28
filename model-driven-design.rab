@@ -15,7 +15,7 @@
 
 = Model-Driven Design
 
-(('tag:center'))We already know that in DDD, everyone should participate in the design process..
+(('tag:center'))We already know that in DDD, everyone should ((*participate*)) in the design process..
 
 == properties
   : hide-title
@@ -23,7 +23,7 @@
 
 = Model-Driven Design
 
-(('tag:center'))..and we know that we must produce domain models and ubiquitous language.
+(('tag:center'))..and we know that we must produce ((*domain models*)) and ubiquitous ((*language*)).
 
 == properties
   : hide-title
@@ -33,6 +33,9 @@
 
 (('tag:center'))To help us structure our way of thinking, now we will discuss about the ((*building blocks*)) of a domain model.
 
+== properties
+  : hide-title
+    true
 
 = Building Blocks
 
@@ -44,23 +47,39 @@
 
 = Layered Architecture
 
-(('tag:center'))To build a great model, we also have to think about the implementation from the beginning.
+(('tag:center'))To build a great model, we also have to think about the ((*implementation*)) from the beginning.
+
+== properties
+  : hide-title
+    true
 
 = Layered Architecture
 
-(('tag:center'))When we create an application, a large part of it may not directly related to the domain.
+(('tag:center'))When we create an application, a large part of it ((*may not*)) directly ((*related*)) to the domain.
+
+== properties
+  : hide-title
+    true
 
 = Layered Architecture
 
-(('tag:center'))Major portion of our codes will be about the database access, file or network access, user interfaces, etc.
+(('tag:center'))((*Major portion*)) of our codes will be about the database access, file or network access, user interfaces, etc.
+
+== properties
+  : hide-title
+    true
 
 = Layered Architecture
 
 (('tag:center'))It is important here to think about ((*layers*)).
 
+== properties
+  : hide-title
+    true
+
 = Layered Architecture
 
-(('tag:center'))We must make sure that, all the code related to the domain model is concentrated in one layer.
+(('tag:center'))We must make sure that, all the code related to the ((*domain model*)) is concentrated in ((*one layer*)).
 
 = Layered Architecture
 
@@ -68,31 +87,47 @@
 
 = Layered Architecture
 
-(('tag:center'))The huge benefits: our codes will be more adaptive to change..
+(('tag:center'))The huge benefits: our codes will be more ((*adaptive*)) to change..
 
 = Layered Architecture
 
-(('tag:center'))..plus easier to tests and shown to less-technical people in our team.
+(('tag:center'))..plus easier to ((*tests*)) and ((*shown*)) to less-technical people in our team.
 
 = Entities
 
-(('tag:center'))The next building block is called ((*Entities*)).
+(('tag:center'))Entities
+
+== properties
+  : hide-title
+    true
 
 = Entities
 
-(('tag:center'))There are objects in domain models that spans the life of a system and can extend beyond it.
+(('tag:center'))There are objects in domain models that ((*spans*)) the life of a system and can ((*extend*)) beyond it.
+
+== properties
+  : hide-title
+    true
 
 = Entities
 
-(('tag:center'))Each objects of those kind also can be uniquely identified.
+(('tag:center'))Each objects of those kind also can be ((*uniquely*)) identified.
+
+== properties
+  : hide-title
+    true
 
 = Entities
 
 (('tag:center'))Such objects are called ((*Entities*))
 
+== properties
+  : hide-title
+    true
+
 = Entities
 
-(('tag:center'))The most important thing when creating entities, you have to define a means for distinguishing each object regardless of its form or history.
+(('tag:center'))The most important thing when creating entities, you have to define a means for ((*distinguishing each object*)) regardless of its form or history.
 
 = Entities
 
@@ -100,11 +135,11 @@
 
 = Entities
 
-(('tag:center'))System must be able to distinguish any 1 object (important).
+(('tag:center'))System must be able to ((*distinguish*)) any 1 object (important).
 
 = Value Objects
 
-(('tag:center'))But not everything can become entities.
+(('tag:center'))Value Objects
 
 == properties
   : hide-title
@@ -112,7 +147,7 @@
 
 = Value Objects
 
-(('tag:center'))Tracking identity is hard, lots of consideration involved.
+(('tag:center'))((*Not everything*)) can become entities.
 
 == properties
   : hide-title
@@ -120,7 +155,16 @@
 
 = Value Objects
 
-(('tag:center'))An object that is used to describe certain aspects of a domain but does not have identity is called The ((*Value Objects*)).
+(('tag:center'))Tracking identity is ((*hard*)), lots of consideration involved.
+
+== properties
+  : hide-title
+    true
+
+= Value Objects
+
+(('tag:center'))An object that is used to describe certain aspects of a domain but does not have identity is called:\n\n
+(('tag:center'))The ((*Value Objects*)).
 
 == properties
   : hide-title
@@ -136,36 +180,60 @@
 
 = Value Objects
 
-(('tag:center'))We care about its attributes, but we don't care whether it can be uniquely identified or not.
+(('tag:center'))We care about its attributes, but we ((*don't care*)) whether it can be ((*uniquely identified*)) or not.
 
 = Value Objects
 
 Other characteristics:
-* Value objects are highly recommended to be immutable
-* Value objects can contain another value objects
+* Value objects are highly recommended to be ((*immutable*))
+* Value objects can ((*contain another*)) value objects
+
+= Services
+
+(('tag:center'))Services
+
+== properties
+  : hide-title
+    true
 
 = Service
 
 (('tag:center'))We also have objects that ((*do not have internal state*)) but ((*provide functionality*)) for the domain.
 
+== properties
+  : hide-title
+    true
+
 = Service
 
-(('tag:center'))It is called Service.
+(('tag:center'))It is called ((*Service*)).
+
+== properties
+  : hide-title
+    true
 
 = Service
 
 Characteristics:
 * The operation performed refers to a domain concept that does not belong to entities or value objects.
 * The operation performed refers to other objects in the domain.
-* The operation is stateless.
+* The operation is ((*stateless*)).
 
 = Module
 
-(('tag:center'))Module can be used to organize your models.
+(('tag:center'))Module
+
+== properties
+  : hide-title
+    true
 
 = Module
 
-(('tag:center'))They can provide maximum cohesion possible.
+(('tag:center'))Module can be used to ((*organize*)) your models.
+
+= Module
+
+(('tag:center'))They can provide maximum ((*cohesion*)) possible.
 
 = Module
 
@@ -178,16 +246,18 @@ Characteristics:
 
 = Module
 
-(('tag:center'))The first is communicational cohesion. This is where we group together objects that ((*operate on the same data*)).
+(('tag:center'))1. ((*Communicational*)) cohesion\n\n
+(('tag:center'))This is where we group together objects that ((*operate on the same data*)).
 
 = Module
 
-(('tag:center'))The second one is functional cohesion. This is where we group together objects that ((*work together*)) on a ((*well defined task*)).\n
+(('tag:center'))2. ((*Functional*)) cohesion\n\n
+(('tag:center'))This is where we group together objects that ((*work together*)) on a ((*well defined task*)).\n
 (('sub: This is the preferred way to structure our application'))
 
 = Module
 
-(('tag:center'))Module should have well-defined interfaces to be accessed by other modules.
+(('tag:center'))Module should have well-defined ((*interfaces*)) to be accessed by other modules.
 
 = Module
 
@@ -195,23 +265,39 @@ Characteristics:
 
 = Module
 
-(('tag:center'))Module should also evolve, don't keep it frozen.
+(('tag:center'))Module should also ((*evolve*)), don't keep it frozen.
 
 = Aggregate
 
-(('tag:center'))Aggregate is a group of associated objects, which are considered one unit with regard to data changes.
+(('tag:center'))Aggregate
+
+== properties
+  : hide-title
+    true
 
 = Aggregate
 
-(('tag:center'))Each aggregate has one root.
+(('tag:center'))Aggregate is a ((*group*)) of associated objects, which are considered ((*one unit*)) with regard to data changes.
 
 = Aggregate
 
-(('tag:center'))The root is an entity, and it is the only object accessible from outside.
+(('tag:center'))Each aggregate has ((*one root*)).
+
+= Aggregate
+
+(('tag:center'))The root is an ((*entity*)), and it is the only object ((*accessible*)) from ((*outside*)).
 
 = Factory
 
-(('tag:center'))If creating the object is a laborous process..
+(('tag:center'))Factory
+
+== properties
+  : hide-title
+    true
+
+= Factory
+
+(('tag:center'))If creating the object is a ((*laborous*)) process..
 
 == properties
   : hide-title
@@ -244,9 +330,9 @@ Characteristics:
 = Factory
 
 Characteristics:
-* Encapsulate knowledge necessary for object creation
-* Especially useful to create aggregates
-* Creation should be atomic
+* ((*Encapsulate*)) knowledge necessary for object creation
+* Especially useful to create ((*aggregates*))
+* Creation should be ((*atomic*))
 
 = Factory
 
@@ -265,7 +351,15 @@ Characteristics:
 
 = Repository
 
-(('tag:center'))Repository is the object that encapsulate all the logic needed to obtain object references.
+(('tag:center'))Repository
+
+== properties
+  : hide-title
+    true
+
+= Repository
+
+(('tag:center'))Repository is the object that ((*encapsulate*)) all the logic needed to ((*obtain*)) object references.
 
 = Repository
 
@@ -291,19 +385,19 @@ Characteristics:
 
 = Preserving Model Integrity
 
-(('tag:center'))There are challenges involved when working in a large project with multiple teams.
+(('tag:center'))There are ((*challenges*)) involved when working in a large project with multiple teams.
 
 = Preserving Model Integrity
 
-(('tag:center'))When multiple teams work together, code development is done in parallel.
+(('tag:center'))When multiple teams work together, code development is done in ((*parallel*)).
 
 = Preserving Model Integrity
 
-(('tag:center'))They all start with one big model, and each team given a share of it to implement.
+(('tag:center'))They all start with one big model, and each team given a ((*share*)) of it to implement.
 
 = Preserving Model Integrity
 
-(('tag:center'))In that case, each team only know a portion of the whole model.
+(('tag:center'))In that case, each team only know ((*a portion*)) of the whole model.
 
 = Preserving Model Integrity
 
@@ -311,7 +405,7 @@ Characteristics:
 
 = Preserving Model Integrity
 
-(('tag:center'))We need techniques to ensure multiple teams can collaborate to work on the same model.
+(('tag:center'))We need techniques to ensure multiple teams can ((*collaborate*)) to work on the same model.
 
 = Bounded Context
 
@@ -332,13 +426,21 @@ Characteristics:
 
 = Bounded Context
 
-(('tag:center'))We split our large model into several models, everybody can then work freely on their own pace.
+(('tag:center'))We ((*split*)) our large model into several models, everybody can then work freely on their own pace.
 
 = Bounded Context
 
 This gives team members clear & shared understanding on
 * What has to be consistent
 * What has to be developed independently
+
+= Continous Integration
+
+(('tag:center'))Continous Integration
+
+== properties
+  : hide-title
+    true
 
 = Continous Integration
 
@@ -365,6 +467,14 @@ Rules:
 
 = Context Map
 
+(('tag:center'))Context Map
+
+== properties
+  : hide-title
+    true
+
+= Context Map
+
 (('tag:center'))Context map is a document that outlines all bounded contexts and the relationship between them.
 
 = Integration Between Different Contexts
@@ -377,6 +487,10 @@ Rules:
 # Separate Ways
 # Open Host Service
 # Distillation
+
+== properties
+  : hide-title
+    true
 
 = Thanks
 
